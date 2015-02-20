@@ -1,0 +1,15 @@
+<ion-view view-title="My Matches">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="horses in horses" href="#/app/playlists/{{playlist.id}}">
+        <div class="row">
+          <div class="col col-25">
+            <img src="{{horses.image}}" class="matches_image">
+          </div>
+          <div class="col col-50 name">{{horses.name}}</div>
+          <div class="col contact"> <span class="badge badge-calm">Contact</span></div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

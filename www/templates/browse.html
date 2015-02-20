@@ -1,0 +1,17 @@
+<ion-view view-title="StudMate" no-scroll>
+
+  <ion-content>
+    <div class="wrapper">
+    <h1 >Direction: {{taco}}</h1>
+      <td-cards>
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-drag-left="cardSwipedLeft($index)" on-drag-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
+          <div class="image" ng-controller="CardCtrl">
+            <div class="no-text">NOPE</div>
+            <div class="yes-text">LIKE</div>
+            <img ng-src="{{card.image}}">
+          </div>
+        </td-card>
+      </td-cards>
+    </div>
+  </ion-content>
+</ion-view>
