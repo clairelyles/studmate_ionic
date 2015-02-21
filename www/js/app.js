@@ -18,6 +18,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic.contrib.ui.tin
       StatusBar.styleDefault();
     }
   });
+
+
 })
 
 .directive('noScroll', function($document) {

@@ -39,8 +39,13 @@
       this.width = this.el.offsetWidth;
 
       this.startX = this.startY = this.x = this.y = 0;
-
+      var that = this
+      // alert("test");
       this.bindEvents();
+
+      // setTimeout(that.bindEvents, 500);
+
+
     },
 
     /**
@@ -213,7 +218,7 @@
       var width = this.el.offsetWidth;
       var point = window.innerWidth / 2 + this.rotationDirection * (width / 2)
       var distance = Math.abs(point - e.gesture.touches[0].pageX);// - window.innerWidth/2);
-      console.log(distance);
+      // console.log(distance);
 
       this.touchDistance = distance * 10;
     },
@@ -268,7 +273,7 @@
             el: el,
             onPartialSwipe: function(amt) {
               $timeout(function() {
-                console.log("opacity", amt);
+                // console.log("opacity", amt);
 
                 if (amt < 0) {
                   document.querySelector('.no-text').style.opacity = 100;

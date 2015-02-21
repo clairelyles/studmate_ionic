@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicSideMenuDelegate, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicSideMenuDelegate, $timeout, $http) {
 
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
@@ -32,7 +32,6 @@ angular.module('starter.controllers', [])
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
-
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
@@ -86,22 +85,32 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideMenuDelegate) {
+.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideMenuDelegate, $http) {
+
   $ionicSideMenuDelegate.canDragContent(false);
 
   console.log('CARDS CTRL');
-  var cardTypes = [
-    { name: 'Rodioso', image: 'http://img.equinenow.com/equine/data/photos/963269_5.jpg' },
-    { name: 'Indy Bright', image: 'http://img.equinenow.com/equine/data/photos/420468_1.jpg' },
-    { name: 'Mo Breaking News', image: 'http://img.equinenow.com/equine/data/photos/645048_1.jpg' },
-    { name: 'Cazar', image: 'http://img.equinenow.com/equine/data/photos/805245_1.jpg'},
-    { name: 'Da Sir Dierich', image: 'http://img.equinenow.com/equine/data/photos/436486_1.jpg' }
-  ];
 
-  $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+  $scope.loaded=false;
 
-  $scope.cardDestroyed = function(index) {
-    // alert("destroyed");
+  $http.get("http://localhost:1337/api/stud").success(function(data) {
+    var cardTypes = data;
+    console.log(data);
+    $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+    $scope.loaded=true;
+  })
+
+  // var cardTypes = [
+  //   { id: 0, name: 'Rodioso', image: 'http://img.equinenow.com/equine/data/photos/963269_1.jpg' },
+  //   { id: 1, name: 'Indy Bright', image: 'http://img.equinenow.com/equine/data/photos/420468_1.jpg' },
+  //   { id: 2, name: 'Mo Breaking News', image: 'http://img.equinenow.com/equine/data/photos/645048_1.jpg' },
+  //   { id: 3, name: 'Cazar', image: 'http://img.equinenow.com/equine/data/photos/805245_1.jpg'},
+  //   { id: 4, name: 'Da Sir Dierich', image: 'http://img.equinenow.com/equine/data/photos/436486_1.jpg' }
+  // ];
+  // $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+
+  $scope.cardDestroyed = function(index, direction) {
+    console.log(direction);
     $scope.cards.splice(index, 1);
   };
 

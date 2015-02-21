@@ -2,13 +2,13 @@
 
   <ion-content>
     <div class="wrapper">
-    <h1 >Direction: {{taco}}</h1>
-      <td-cards>
-        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-drag-left="cardSwipedLeft($index)" on-drag-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
+    <h3>Swipe Direction: {{taco}}</h3>
+      <td-cards ng-if="loaded">
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed(card.id, taco)" on-drag-left="cardSwipedLeft(card.id)" on-drag-right="cardSwipedRight(card.id)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
           <div class="image" ng-controller="CardCtrl">
-            <div class="no-text">NOPE</div>
-            <div class="yes-text">LIKE</div>
-            <img ng-src="{{card.image}}">
+            <div class="yes-text">YAY</div>
+            <div class="no-text">NEIGH</div>
+            <img ng-src="{{card.picture || card.image}}">
           </div>
         </td-card>
       </td-cards>
