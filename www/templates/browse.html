@@ -1,17 +1,27 @@
-<ion-view view-title="StudMate" no-scroll>
+<ion-view class="view-title" no-scroll>
 
   <ion-content>
-    <div class="wrapper">
-    <h3>Swipe Direction: {{taco}}</h3>
+    <div class="wrapper" ng-controller="CardCtrl">
+    <!-- <h3>{{taco}}</h3> -->
       <td-cards ng-if="loaded">
         <td-card ng-repeat="card in cards" on-destroy="cardDestroyed(card.id, taco)" on-drag-left="cardSwipedLeft(card.id)" on-drag-right="cardSwipedRight(card.id)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
-          <div class="image" ng-controller="CardCtrl">
+          <div class="image">
             <div class="yes-text">YAY</div>
             <div class="no-text">NEIGH</div>
             <img ng-src="{{card.picture || card.image}}">
+          </div>
+          <div class="horse-info">
+            <div class="row">
+              <div class="col col-75">{{card.name}}</div>
+              <div class="col col"><strong>${{card.fee}}</strong></div>
+            </div>
+            <div class="row">
+              <div class="col"><em>{{card.breed}}</em></div>
+            </div>
           </div>
         </td-card>
       </td-cards>
     </div>
   </ion-content>
+
 </ion-view>

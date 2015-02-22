@@ -1,16 +1,46 @@
 /* Empty. Add your own CSS if you like */
 @font-face {
-  font-family: 'Open Sans Condensed';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
-  src: url(font/OpenSans-CondensedLight.woff) format('woff');
+  src: url(font/Roboto-Regular.woff2) format('woff2');
 }
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h1.nav-title {
+  color: #c0392b;
+  padding-top: .17em;
+  font-size: 25px;
+}
+
+/*a.item {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}*/
 
 body {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 16px!important;
+  /*font-family: 'Open Sans Condensed', sans-serif;*/
+  font-size: 18px!important;
 }
 
+
+/*.bar-header {
+  height: 60px !important;
+}
+.bar-header > * {
+  margin-top: 10px !important;
+}*/
+
+.custom-icon {
+  font-style: 64px;
+  color: gray;
+}
 
 .wrapper {
   padding: 10px;
@@ -46,12 +76,16 @@ td-card {
   margin-bottom: 40px;
   margin-left: -150px;
   width: 300px;
-  height: 200px;
+  /*height: 200px;*/
   overflow: hidden;
 
   border: 1px solid #999;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
   border-radius: 6px;
+}
+
+.horse-info {
+  background-color: #fff;
 }
 /*
 td-card.card-0 {
@@ -72,13 +106,39 @@ td-card.card-2 {
 }
 */
 
+/* ------ Landing Page ------ */
+
+.header{
+  /*position:relative;*/
+  background: #c0392b;
+  height: 300px;
+}
+
+.header-content {
+  /*padding-top: 5%;*/
+  position: absolute;
+}
+
+.header-content div > h1 {
+  color: #ecf0f1;
+}
+
+.logo-big {
+  opacity: 0.4;
+}
+
+/* ------ Browse Page ------ */
+div.image {
+  background-color: #fff;
+}
+
 td-card .image {
   position: relative;
 }
 
 td-card img {
   max-width: 100%;
-  border-radius: 6px;
+  /*border-radius: 6px;*/
 }
 
 .yes-text {
