@@ -1,4 +1,17 @@
 /* Empty. Add your own CSS if you like */
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url(font/OpenSans-CondensedLight.woff) format('woff');
+}
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px!important;
+}
+
+
 .wrapper {
   padding: 10px;
 }
