@@ -9,10 +9,12 @@ studmateApp.factory('UserService', ['$http', function($http) {
         .success(function(data) {
           if (data && data.user) {
             self.currentUser = data.user
+            console.log("THIS WORKED");
           } else {
             self.currentUser = false;
+            console.log("THIS DIDNT WORK");
           }
-            callback(null, data);
+          callback(null, data);
         }).error(function(err) {
           callback(err);
         })
@@ -21,9 +23,11 @@ studmateApp.factory('UserService', ['$http', function($http) {
       var self = this;
       $http.delete('http://localhost:1337/api/auth')
         .success(function(data) {
+          console.log('user logged out')
           self.currentUser = false;
           callback(null, data);
         }).error(function(err) {
+          console.log('user not logged out')
           callback(err);
         })
     },

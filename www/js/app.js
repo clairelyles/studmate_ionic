@@ -1,6 +1,6 @@
 var studmateApp = angular.module('studmateApp', ['ionic', 'ionic.contrib.ui.tinderCards']);
 
-studmateApp.run(function($ionicPlatform) {
+studmateApp.run(['$ionicPlatform', 'UserService', function($ionicPlatform, UserService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -13,7 +13,11 @@ studmateApp.run(function($ionicPlatform) {
     }
   });
 
-})
+   UserService.check(function(err, data) {
+    console.log('check',err,data)
+  });
+
+}])
 
 studmateApp.directive('noScroll', function($document) {
 
@@ -31,50 +35,42 @@ studmateApp.directive('noScroll', function($document) {
 studmateApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  .state('app', {
-    url: "/app",
-    abstract: true,
-    templateUrl: "templates/menu.html",
-    controller: 'AppCtrl'
-  })
+    .state('app', {
+      url: "/app",
+      abstract: true,
+      templateUrl: "templates/menu.html",
+      controller: 'AppCtrl'
+    })
 
-  .state('app.about', {
-    url: "/about",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/about.html"
+    .state('app.about', {
+      url: "/about",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/about.html"
+        }
       }
-    }
-  })
+    })
 
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html",
-        controller: "CardsCtrl"
+    .state('app.matches', {
+      url: "/matches",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/matches.html",
+          controller: 'HorsesCtrl'
+        }
       }
-    }
-  })
-  .state('app.matches', {
-    url: "/matches",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/matches.html",
-        controller: 'HorsesCtrl'
-      }
-    }
-  })
+    })
 
-  // .state('app.single', {
-  //   url: "/playlists/:playlistId",
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: "templates/playlist.html",
-  //       controller: 'HorseCtrl'
-  //     }
-  //   }
-  // });
+    .state('app.browse', {
+      url: "/browse",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/browse.html",
+          controller: "CardsCtrl"
+        }
+      }
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/browse');
 });

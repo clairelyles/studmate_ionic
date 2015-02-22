@@ -1,5 +1,10 @@
 studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSideMenuDelegate', '$timeout', 'UserService', function($scope, $http, $ionicModal, $ionicSideMenuDelegate, $timeout, UserService) {
 
+  $scope.UserService = UserService;
+  $scope.$watchCollection('UserService', function() {
+    $scope.currentUser = UserService.currentUser;
+  });
+
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
@@ -14,7 +19,11 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
     $scope.modal = modal;
   });
 
-  $scope.login = function() {
+  $scope.closeLogin = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.openLogin = function() {
     $scope.modal.show();
   };
 
@@ -22,8 +31,7 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
   $scope.loginInfo = {email: '', password: ''};
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginInfo);
-    console.log($scope);
-    UserService.login($scope.loginInfo.email, $scope.loginInfo.password,
+      UserService.login($scope.loginInfo.email, $scope.loginInfo.password,
       function(err, data) {
         if (err) {
           alert(err);
@@ -47,7 +55,7 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
   };
 
   // Open the login modal
-  $scope.signup = function() {
+  $scope.openSignup = function() {
     $scope.modal2.show();
   };
 
@@ -66,7 +74,7 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
       lastName: $scope.signupInfo.lastName,
       zip: $scope.signupInfo.zip
     }
-    $http.post('http://localhost:1337/api/auth', signupData)
+    $http.post('http://localhost:1337/api/user', signupData)
       .success(function(data) {
         $scope.modal2.hide();
         $scope.modal.show();
