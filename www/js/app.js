@@ -42,6 +42,16 @@ studmateApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'AppCtrl'
     })
 
+    .state('app.landing', {
+      url: "/welcome",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/landing.html",
+          controller: 'LandingCtrl'
+        }
+      }
+    })
+
     .state('app.about', {
       url: "/about",
       views: {
@@ -72,5 +82,5 @@ studmateApp.config(function($stateProvider, $urlRouterProvider) {
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/browse');
+  $urlRouterProvider.otherwise('/app/welcome');
 });
