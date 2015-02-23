@@ -1,4 +1,4 @@
-studmateApp.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideMenuDelegate, $http, UserService) {
+studmateApp.controller('CardsCtrl', ['$scope', 'TDCardDelegate', '$ionicSideMenuDelegate', '$http', 'UserService', function($scope, TDCardDelegate, $ionicSideMenuDelegate, $http, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(false);
 
@@ -56,4 +56,4 @@ studmateApp.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideM
     console.log("amount",amt);
   }
 
-})
+}])
