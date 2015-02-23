@@ -1,36 +1,48 @@
-studmateApp.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideMenuDelegate, $http) {
+studmateApp.controller('CardsCtrl', function($scope, TDCardDelegate, $ionicSideMenuDelegate, $http, UserService) {
 
   $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.loaded=false;
 
-  $http.get("http://localhost:1337/api/stud").success(function(data) {
-    var cardTypes = data;
-    console.log(data);
-    $scope.cards = Array.prototype.slice.call(cardTypes, 0);
-    $scope.loaded=true;
+  $http.get("http://localhost:1337/api/stud")
+    .success(function(data) {
+      var cardTypes = data;
+      console.log("cardTypes is loading:"+data);
+      $scope.cards = Array.prototype.slice.call(cardTypes, 0);
+      $scope.loaded=true;
   })
 
-  // var cardTypes = [
-  //   { id: 0, name: 'Rodioso', image: 'http://img.equinenow.com/equine/data/photos/963269_1.jpg' },
-  //   { id: 1, name: 'Indy Bright', image: 'http://img.equinenow.com/equine/data/photos/420468_1.jpg' },
-  //   { id: 2, name: 'Mo Breaking News', image: 'http://img.equinenow.com/equine/data/photos/645048_1.jpg' },
-  //   { id: 3, name: 'Cazar', image: 'http://img.equinenow.com/equine/data/photos/805245_1.jpg'},
-  //   { id: 4, name: 'Da Sir Dierich', image: 'http://img.equinenow.com/equine/data/photos/436486_1.jpg' }
-  // ];
-  // $scope.cards = Array.prototype.slice.call(cardTypes, 0);
-
-  $scope.cardDestroyed = function(index, direction) {
-    console.log(direction);
+  $scope.cardDestroyed = function(index, dir) {
     $scope.cards.splice(index, 1);
+
+    if (dir == "RIGHT") {
+      var req = {
+        method: 'POST',
+        url: "http://localhost:1337/api/stud",
+        data: {
+          user: UserService.currentUser.id,
+          stud: index
+        }
+      };
+      $http(req)
+        .success(function(data) {
+          console.log("match DID work!!!!!!!")
+        }).error(function(err) {
+          console.log("There was a match error:"+err)
+        });
+    };
+
+
   };
 
+  // Left is NEIGH or No
   $scope.cardSwipedLeft = function(index) {
-    $scope.taco = 'LEFT';
-    // $scope.addCard();
-  };
+    $scope.dir = 'LEFT';
+    }
+
+   // Left is YAY or yes
   $scope.cardSwipedRight = function(index) {
-    $scope.taco = 'RIGHT';
+    $scope.dir = 'RIGHT';
     // $scope.addCard();
   };
 

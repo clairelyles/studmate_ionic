@@ -14,7 +14,14 @@
         </div>
       </div>
     </div>
+    <br><br>
     <div class="wrapper">
+      <button ng-hide="currentUser" class="button button-block button-outline button-assertive" ng-click="openLogin()">
+        Login
+      </button>
+      <button ng-hide="currentUser" class="button button-block button-outline button-assertive" ng-click="openSignup()">
+        Signup
+      </button>
     </div>
   </ion-content>
 </ion-view>

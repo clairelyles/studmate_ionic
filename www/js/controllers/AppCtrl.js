@@ -1,4 +1,4 @@
-studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSideMenuDelegate', '$timeout', 'UserService', function($scope, $http, $ionicModal, $ionicSideMenuDelegate, $timeout, UserService) {
+studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSideMenuDelegate', '$timeout', 'UserService', '$location', function($scope, $http, $ionicModal, $ionicSideMenuDelegate, $timeout, UserService, $location) {
 
   $scope.UserService = UserService;
   $scope.$watchCollection('UserService', function() {
@@ -36,7 +36,8 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
         if (err) {
           alert(err);
         } else if (data.user) {
-          $scope.modal.hide();
+          $scope.closeLogin();
+          $location.path('/app/browse');
         } else {
           alert(data.error)
         }
@@ -82,7 +83,14 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
       }).error(function(err) {
         alert(err);
       })
-
   };
+
+  $scope.logout = function() {
+    // connects to UserService where we define the deletion of the session
+    UserService.logout(function(err,data) {
+
+    })
+  }
+
 
 }])

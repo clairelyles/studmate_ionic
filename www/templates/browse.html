@@ -1,19 +1,21 @@
-<ion-view class="view-title" no-scroll>
+<ion-view class="view-title" no-scroll hide-back-button="true">
 
   <ion-content>
     <div class="wrapper" ng-controller="CardCtrl">
-    <!-- <h3>{{taco}}</h3> -->
+    <!-- <h3>{{dir}}</h3> -->
       <td-cards ng-if="loaded">
-        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed(card.id, taco)" on-drag-left="cardSwipedLeft(card.id)" on-drag-right="cardSwipedRight(card.id)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed(card.id, dir)" on-drag-left="cardSwipedLeft(card.id)" on-drag-right="cardSwipedRight(card.id)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}" no-scroll>
           <div class="image">
-            <div class="yes-text">YAY</div>
-            <div class="no-text">NEIGH</div>
+            <div class="yes-text"><strong>YAY</strong></div>
+            <div class="no-text"><strong>NEIGH</strong></div>
             <img ng-src="{{card.picture || card.image}}">
           </div>
           <div class="horse-info">
             <div class="row">
-              <div class="col col-75">{{card.name}}</div>
-              <div class="col col"><strong>${{card.fee}}</strong></div>
+              <div class="col col-75">
+                <strong>{{card.name}}</strong><!-- , ${{card.fee}} -->
+              </div>
+              <div class="col col">${{card.fee}}</div>
             </div>
             <div class="row">
               <div class="col"><em>{{card.breed}}</em></div>
@@ -21,6 +23,13 @@
           </div>
         </td-card>
       </td-cards>
+      <div class="row browse-controls">
+        <div class="col">
+          <i class="ion neigh-icon ion-close-round" ng-click="cardDestroyed(card.id, 'LEFT')"></i>
+          <i class="ion info-icon ion-information"></i>
+          <i class="ion yay-icon ion-heart" ng-click="cardDestroyed(card.id, 'RIGHT')"></i>
+        </div>
+      </div>
     </div>
   </ion-content>
 

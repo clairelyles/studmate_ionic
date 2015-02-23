@@ -1,4 +1,4 @@
-studmateApp.controller('HorsesCtrl', function($scope, $ionicSideMenuDelegate) {
+studmateApp.controller('BrowseCtrl', function($scope, $ionicSideMenuDelegate) {
   $ionicSideMenuDelegate.canDragContent(false);
 
   $scope.horses = [

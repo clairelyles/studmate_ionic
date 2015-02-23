@@ -18,14 +18,9 @@ h1.nav-title {
   font-size: 25px;
 }
 
-/*a.item {
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-}*/
-
 body {
-  /*font-family: 'Open Sans Condensed', sans-serif;*/
+  font-family: 'Roboto';
+  color: #7f8c8d;
   font-size: 18px!important;
 }
 
@@ -46,6 +41,27 @@ body {
   padding: 10px;
 }
 
+/* ------ Menu / Nav ------ */
+
+i.icon.ion-heart {
+  color: #c0392b;
+  /*opacity: 0.8;*/
+}
+
+i.icon.ion-information-circled {
+  color: #c0392b;
+  /*opacity: 0.8;*/
+}
+
+i.icon.ion-magnet {
+  color: #c0392b;
+  /*opacity: 0.8;*/
+}
+
+
+
+/* ------ Matches Page ------ */
+
 .matches_image {
   height: 30%;
   width: 30%;
@@ -59,12 +75,18 @@ body {
   padding-top: 1.3em;
 }
 
+.contact span {
+  margin-top: .5em;
+}
+
 span.badge.badge-calm {
   /*text-align: right;*/
   margin-top: .7em;
 }
 
-/* Empty. Add your own CSS if you like */
+
+/* ------ Browse Page ------ */
+
 td-cards {
   display: block;
 }
@@ -72,7 +94,7 @@ td-cards {
 td-card {
   position: absolute;
   left: 50%;
-  margin-top: 80px;
+  margin-top: 60px;
   margin-bottom: 40px;
   margin-left: -150px;
   width: 300px;
@@ -115,7 +137,7 @@ td-card.card-2 {
 }
 
 .header-content {
-  /*padding-top: 5%;*/
+  padding-top: 5%;
   position: absolute;
 }
 
@@ -130,6 +152,9 @@ td-card.card-2 {
 /* ------ Browse Page ------ */
 div.image {
   background-color: #fff;
+  max-height: 210px;
+  overflow: hidden;
+  /*border-bottom: 1px solid #7f8c8d;*/
 }
 
 td-card .image {
@@ -169,4 +194,42 @@ td-card img {
 
 .item-complex .item-content, .item-radio .item-content{
   padding:1px;
+}
+
+.tabs .tab-item .badge.badge-assertive, .badge.badge-assertive {
+  background-color: #c0392b;
+}
+
+.browse-controls {
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 400px;
+}
+
+i.neigh-icon.ion-close-round {
+  font-size: 40px;
+  color: #c0392b;
+  opacity: 0.8;
+  padding: 10px 15px 10px 15px;
+  /*background-color: #bdc3c7;*/
+  border: 8px solid #bdc3c7;
+  border-radius: 100%;
+}
+i.yay-icon.ion-heart {
+  font-size: 40px;
+  color: #2ecc71;
+  opacity: 0.8;
+  padding: 10px 15px 10px 15px;
+  /*background-color: #bdc3c7;*/
+  border: 8px solid #bdc3c7;
+  border-radius: 100%;
+}
+
+i.info-icon.ion-information {
+  font-size: 20px;
+  color: #3498db;
+  opacity: 0.8;
+  padding: 10px 18px 10px 18px;
+  border: 8px solid #bdc3c7;
+  border-radius: 100%;
 }

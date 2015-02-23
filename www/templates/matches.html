@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view hide-back-button="true">
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="horses in horses" href="#/">
@@ -7,7 +7,7 @@
             <img src="{{horses.image}}" class="matches_image">
           </div>
           <div class="col col-50 name">{{horses.name}}</div>
-          <div class="col contact"> <span class="badge badge-calm">Contact</span></div>
+          <div class="col contact"> <span class="badge badge-assertive">Contact</span></div>
         </div>
       </ion-item>
     </ion-list>

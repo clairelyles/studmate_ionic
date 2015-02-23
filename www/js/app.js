@@ -1,6 +1,10 @@
 var studmateApp = angular.module('studmateApp', ['ionic', 'ionic.contrib.ui.tinderCards']);
 
 studmateApp.run(['$ionicPlatform', 'UserService', function($ionicPlatform, UserService) {
+  UserService.check(function(err, data) {
+    console.log('check',err,data)
+  });
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -11,10 +15,6 @@ studmateApp.run(['$ionicPlatform', 'UserService', function($ionicPlatform, UserS
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-  });
-
-   UserService.check(function(err, data) {
-    console.log('check',err,data)
   });
 
 }])
@@ -66,7 +66,7 @@ studmateApp.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'menuContent': {
           templateUrl: "templates/matches.html",
-          controller: 'HorsesCtrl'
+          controller: 'MatchesCtrl'
         }
       }
     })
