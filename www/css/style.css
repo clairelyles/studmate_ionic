@@ -87,8 +87,8 @@ span.badge.badge-calm {
 ion-item.item {
   padding: 0px;
 }
-button.button.button-positive {
- /*color: #c0392b;*/
+.button:after {
+ color: #c0392b;
 }
 
 
