@@ -5,8 +5,11 @@ studmateApp.controller('MatchesCtrl', ['$scope', '$http', '$ionicSideMenuDelegat
   // console.log("current user: ",userId);
   $http.get("http://localhost:1337/api/user/"+userId)
     .success(function(data) {
-      $scope.userData = data.studs;
-      // console.log("USER & FAVORITE DATA: ");
+      $scope.studData = data.studs;
+      $scope.userData = data;
+      console.log(data);
+    }).error(function(err) {
+      console.log("There was an error with the match: ", err);
     })
 
 }]);

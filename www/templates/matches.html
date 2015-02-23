@@ -1,16 +1,21 @@
 <ion-view hide-back-button="true">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="userData in userData" href="#/">
-        <div class="row">
+      <div class="item item-divider">
+        {{userData.firstName}}'s Matches
+      </div>
+      <ion-item ng-repeat="studData in studData">
+        <div class="row item-button-right">
           <div class="col col-25">
-            <img src="{{userData.picture}}" class="matches_image">
+            <img src="{{studData.picture}}" class="matches_image">
           </div>
-          <div class="col col-50 name">{{userData.name}}</div>
-          <div class="col contact"> <span class="badge badge-assertive">Contact</span></div>
+          <div class="col col-50 name">{{studData.name}}</div>
+          <div class="col contact"> <button class="button button-assertive">
+      <i class="icon ion-ios7-telephone"></i>
+    </button></div>
         </div>
       </ion-item>
-      <!-- {{userData}} -->
+      <!-- {{studData}} -->
     </ion-list>
   </ion-content>
 </ion-view>

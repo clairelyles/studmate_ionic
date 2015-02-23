@@ -32,7 +32,6 @@ studmateApp.controller('CardsCtrl', ['$scope', 'TDCardDelegate', '$ionicSideMenu
         });
     };
 
-
   };
 
   // Left is NEIGH or No

@@ -63,12 +63,12 @@ i.icon.ion-magnet {
 /* ------ Matches Page ------ */
 
 .matches_image {
-  height: 30%;
-  width: 30%;
+  height: 33%;
+  width: 33%;
   border-radius: 50%;
   overflow: hidden;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 }
 
 .name {
@@ -82,6 +82,13 @@ i.icon.ion-magnet {
 span.badge.badge-calm {
   /*text-align: right;*/
   margin-top: .7em;
+}
+
+ion-item.item {
+  padding: 0px;
+}
+button.button.button-positive {
+ /*color: #c0392b;*/
 }
 
 
