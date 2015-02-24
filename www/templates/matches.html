@@ -4,15 +4,17 @@
       <div class="item item-divider">
         {{userData.firstName}}'s Matches
       </div>
-      <ion-item ng-repeat="studData in studData">
+      <ion-item ng-repeat="studData in studs">
         <div class="row item-button-right">
           <div class="col col-25">
             <img src="{{studData.picture}}" class="matches_image">
           </div>
           <div class="col col-50 name">{{studData.name}}</div>
-          <div class="col contact"> <button class="button button-assertive">
-      <i class="icon ion-ios7-telephone"></i>
-    </button></div>
+          <div class="col contact">
+            <button class="button button-assertive" data-ng-click="contact({{studData}})">
+              <i class="icon ion-ios7-telephone"></i>
+            </button>
+          </div>
         </div>
       </ion-item>
       <!-- {{studData}} -->

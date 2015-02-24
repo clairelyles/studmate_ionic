@@ -1,5 +1,6 @@
 var studmateApp = angular.module('studmateApp', ['ionic', 'ionic.contrib.ui.tinderCards']);
 
+
 studmateApp.run(['$ionicPlatform', 'UserService', function($ionicPlatform, UserService) {
   UserService.check(function(err, data) {
     console.log('check',err,data)

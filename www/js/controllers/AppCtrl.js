@@ -75,7 +75,7 @@ studmateApp.controller('AppCtrl', ['$scope', '$http', '$ionicModal', '$ionicSide
       lastName: $scope.signupInfo.lastName,
       zip: $scope.signupInfo.zip
     }
-    $http.post('http://localhost:1337/api/user', signupData)
+    $http.post('http://studmateapp.herokuapp.com/api/user', signupData)
       .success(function(data) {
         $scope.modal2.hide();
         $scope.modal.show();

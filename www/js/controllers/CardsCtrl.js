@@ -4,7 +4,7 @@ studmateApp.controller('CardsCtrl', ['$scope', 'TDCardDelegate', '$ionicSideMenu
 
   $scope.loaded=false;
 
-  $http.get("http://localhost:1337/api/stud")
+  $http.get("http://studmateapp.herokuapp.com/api/stud")
     .success(function(data) {
       var cardTypes = data;
       console.log("cardTypes is loading:"+data);
@@ -14,19 +14,13 @@ studmateApp.controller('CardsCtrl', ['$scope', 'TDCardDelegate', '$ionicSideMenu
 
   $scope.cardDestroyed = function(index, dir) {
     $scope.cards.splice(index, 1);
+    console.log("the index was: "+index+" and the dir was: "+dir)
 
     if (dir == "RIGHT") {
-      var req = {
-        method: 'POST',
-        url: "http://localhost:1337/api/stud",
-        data: {
-          user: UserService.currentUser.id,
-          stud: index
-        }
-      };
-      $http(req)
+
+      $http.get("http://studmateapp.herokuapp.com/api/user/"+UserService.currentUser.id+"/studs/add/"+index)
         .success(function(data) {
-          console.log("match DID work!!!!!!!")
+          console.log("match DID work!!!!!!!"+data)
         }).error(function(err) {
           console.log("There was a match error:"+err)
         });

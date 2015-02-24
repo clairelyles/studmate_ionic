@@ -5,7 +5,7 @@ studmateApp.factory('UserService', ['$http', function($http) {
     login: function(email, password, callback) {
       var self = this;
       var loginData = { email: email, password: password };
-      $http.post('http://localhost:1337/api/auth', loginData)
+      $http.post('http://studmateapp.herokuapp.com/api/auth', loginData)
         .success(function(data) {
           if (data && data.user) {
             self.currentUser = data.user
@@ -21,7 +21,7 @@ studmateApp.factory('UserService', ['$http', function($http) {
     },
     logout: function(callback) {
       var self = this;
-      $http.delete('http://localhost:1337/api/auth')
+      $http.delete('http://studmateapp.herokuapp.com/api/auth')
         .success(function(data) {
           console.log('user logged out')
           self.currentUser = false;
@@ -33,7 +33,7 @@ studmateApp.factory('UserService', ['$http', function($http) {
     },
     check: function(callback) {
       var self = this;
-      $http.get('http://localhost:1337/api/auth')
+      $http.get('http://studmateapp.herokuapp.com/api/auth')
         .success(function(data) {
           if (data & data.user) {
             self.currentUser = data.user
